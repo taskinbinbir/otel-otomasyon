@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "KartBakiyeEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p align="center" style="padding:2% 0;">karta bakiye ekle</p>
+
+
+<div class="container-fluid d-flex justify-content-center">
+
+
+    <form>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">kart numarası: </label>
+            <div class="col-xs-9">
+                <select id="kart_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">nakit bakiye ekle </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="nakit_bakiye">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">kredi kart bakiye ekle </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="kredi_kart_bakiye">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="bakiye_ekle" type="submit" class="btn btn-primary">kayit</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="Content"></div>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/DoluKartlar",
+            dataType: "json",
+            success: function (returnedData) {
+                debugger;
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>kart numarası seçiniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].id + '</option>';
+                }
+
+                $("#kart_id").html(s);
+
+            }
+        });
+
+    });
+
+
+    $("#bakiye_ekle").click(function () {
+
+        var model = {
+            "kartId": $("#kart_id").val(),
+            "nakitBakiye": $("#nakit_bakiye").val(),
+            "krediKartBakiye": $("#kredi_kart_bakiye").val(),
+
+        };
+        console.log(JSON.stringify(model));
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetKartBakiyeEkle",
+            data: model,
+            dataType: "json",
+            async: false,
+            success: function (response) {
+                alert("success");                
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+
+    });
+
+
+
+</script>

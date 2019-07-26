@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "KartEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p align="center" style="padding:2% 0;">oda ekle</p>
+
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">oda numarası: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="oda_id">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="oda_ekle" type="submit" class="btn btn-primary">ekle</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#oda_ekle").click(function () {
+
+            var model = {
+                "id": $("#oda_id").val()
+            };
+            console.log(JSON.stringify(model));
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/SetOda",
+                data: model,
+                dataType: "json",
+                success: function (response) {
+                    alert(response.data);
+                },
+                failure: function (response) {
+                    alert(response.data);
+                },
+                error: function (response) {
+                    alert(response.data);
+                }
+            });
+
+        });
+    });
+
+
+
+</script>

@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p align="center" style="padding:2% 0;">personel ekle</p>
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form>
+
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">TC no: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="tc_no">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">ad soyad </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="ad_soyad">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">sifre </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="sifre">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">kart id </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="kart_id">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">pozisyon: </label>
+            <div class="col-xs-9">
+                <select id="pozisyon" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="personel_ekle" type="submit" class="btn btn-primary">personel ekle</button>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetPozisyon",
+            dataType: "json",
+            success: function (returnedData) {
+                debugger;
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>kart numarası seçiniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].ad + '</option>';
+                }
+
+                $("#pozisyon").html(s);
+
+            }
+        });
+
+    });
+
+    $("#personel_ekle").click(function () {
+        debugger;
+        var model = {
+            "ad": $("#ad").val(),
+            "tc_no": $("#tc_no").val(),
+            "ad_soyad": $("#ad_soyad").val(),
+            "sifre": $("#sifre").val(),
+            "kart_id": $("#kart_id").val(),
+            "pozisyon_id": $("#pozisyon").val()
+        };
+
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetPersonel",
+            data: model,
+            dataType: "json",
+            async: false,
+            success: function (response) {
+                alert("eklendi");
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+    });
+
+
+</script>

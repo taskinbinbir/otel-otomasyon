@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="otelModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bakiye">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kart_id" Type="int" />
+    <Property Name="kredi_kart_bakiye" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="nakit_bakiye" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="deposito" Type="decimal" Precision="13" Scale="2" />
+  </EntityType>
+  <EntityType Name="depo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="depo_stok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="depo_id" Type="int" Nullable="false" />
+    <Property Name="stok_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="donanim">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="tur_id" Type="int" Nullable="false" />
+    <Property Name="paylasilan_alan_ip" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="kart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="kisi_id" Type="int" />
+    <Property Name="verilis_tarihi" Type="datetime" Precision="0" />
+    <Property Name="son_kullanma_tarihi" Type="datetime" Precision="0" />
+    <Property Name="birey_havuz" Type="int" Nullable="false" />
+    <Property Name="cocuk_havuz" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kisi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tc_no" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="ad_soyad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="kisi_durum_id" Type="int" />
+  </EntityType>
+  <EntityType Name="kisi_durum">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="mekan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="mekan_depo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mekan_id" Type="int" Nullable="false" />
+    <Property Name="depo_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nakit_ciro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kisi_id" Type="int" Nullable="false" />
+    <Property Name="tutar" Type="decimal" Precision="13" Scale="2" Nullable="false" />
+    <Property Name="tarih" Type="date" />
+  </EntityType>
+  <EntityType Name="oda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="kisi_id" Type="int" />
+    <Property Name="giris_tarihi" Type="datetime" Precision="0" />
+    <Property Name="cikis_tarihi" Type="datetime" Precision="0" />
+    <Property Name="ucret" Type="decimal" Precision="13" Scale="2" />
+  </EntityType>
+  <EntityType Name="personel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tc_no" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="ad_soyad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sifre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="kart_id" Type="int" Nullable="false" />
+    <Property Name="pozisyon_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="personel_depo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personel_id" Type="int" Nullable="false" />
+    <Property Name="depo_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="personel_donanim">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="personel_id" Type="int" Nullable="false" />
+    <Property Name="donanim_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pozisyon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stok_grup_id" Type="int" Nullable="false" />
+    <Property Name="stok_ad_id" Type="int" Nullable="false" />
+    <Property Name="stok_birim_id" Type="int" Nullable="false" />
+    <Property Name="fiyat" Type="decimal" Precision="13" Scale="2" Nullable="false" />
+    <Property Name="miktar" Type="decimal" Precision="13" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stok_ad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stok_birim">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stok_grup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ucret">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kisi_id" Type="int" Nullable="false" />
+    <Property Name="mekan_id" Type="int" Nullable="false" />
+    <Property Name="masa" Type="int" Nullable="false" />
+    <Property Name="urunler" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="ucret" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="tarih" Type="datetime" Precision="0" />
+  </EntityType>
+  <Association Name="bakiye_ibfk_1">
+    <End Role="kart" Type="Self.kart" Multiplicity="0..1" />
+    <End Role="bakiye" Type="Self.bakiye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kart">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bakiye">
+        <PropertyRef Name="kart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="depo_stok_ibfk_1">
+    <End Role="depo" Type="Self.depo" Multiplicity="1" />
+    <End Role="depo_stok" Type="Self.depo_stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="depo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="depo_stok">
+        <PropertyRef Name="depo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="depo_stok_ibfk_2">
+    <End Role="stok" Type="Self.stok" Multiplicity="1" />
+    <End Role="depo_stok" Type="Self.depo_stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="depo_stok">
+        <PropertyRef Name="stok_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donanim_ibfk_1">
+    <End Role="tur" Type="Self.tur" Multiplicity="1" />
+    <End Role="donanim" Type="Self.donanim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="donanim">
+        <PropertyRef Name="tur_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="kart_ibfk_1">
+    <End Role="kisi" Type="Self.kisi" Multiplicity="0..1" />
+    <End Role="kart" Type="Self.kart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="kart">
+        <PropertyRef Name="kisi_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="kisi_ibfk_1">
+    <End Role="kisi_durum" Type="Self.kisi_durum" Multiplicity="0..1" />
+    <End Role="kisi" Type="Self.kisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi_durum">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="kisi">
+        <PropertyRef Name="kisi_durum_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="mekan_depo_ibfk_1">
+    <End Role="mekan" Type="Self.mekan" Multiplicity="1" />
+    <End Role="mekan_depo" Type="Self.mekan_depo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mekan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mekan_depo">
+        <PropertyRef Name="mekan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="mekan_depo_ibfk_2">
+    <End Role="depo" Type="Self.depo" Multiplicity="1" />
+    <End Role="mekan_depo" Type="Self.mekan_depo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="depo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mekan_depo">
+        <PropertyRef Name="depo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="nakit_ciro_ibfk_1">
+    <End Role="kisi" Type="Self.kisi" Multiplicity="1" />
+    <End Role="nakit_ciro" Type="Self.nakit_ciro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="nakit_ciro">
+        <PropertyRef Name="kisi_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="oda_ibfk_1">
+    <End Role="kisi" Type="Self.kisi" Multiplicity="0..1" />
+    <End Role="oda" Type="Self.oda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="oda">
+        <PropertyRef Name="kisi_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="personel_depo_ibfk_1">
+    <End Role="personel" Type="Self.personel" Multiplicity="1" />
+    <End Role="personel_depo" Type="Self.personel_depo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personel_depo">
+        <PropertyRef Name="personel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="personel_depo_ibfk_2">
+    <End Role="depo" Type="Self.depo" Multiplicity="1" />
+    <End Role="personel_depo" Type="Self.personel_depo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="depo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personel_depo">
+        <PropertyRef Name="depo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="personel_donanim_ibfk_1">
+    <End Role="personel" Type="Self.personel" Multiplicity="1" />
+    <End Role="personel_donanim" Type="Self.personel_donanim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personel_donanim">
+        <PropertyRef Name="personel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="personel_donanim_ibfk_2">
+    <End Role="donanim" Type="Self.donanim" Multiplicity="1" />
+    <End Role="personel_donanim" Type="Self.personel_donanim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="donanim">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personel_donanim">
+        <PropertyRef Name="donanim_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="personel_ibfk_1">
+    <End Role="pozisyon" Type="Self.pozisyon" Multiplicity="1" />
+    <End Role="personel" Type="Self.personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pozisyon">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personel">
+        <PropertyRef Name="pozisyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stok_ibfk_1">
+    <End Role="stok_grup" Type="Self.stok_grup" Multiplicity="1" />
+    <End Role="stok" Type="Self.stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stok_grup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stok">
+        <PropertyRef Name="stok_grup_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stok_ibfk_2">
+    <End Role="stok_ad" Type="Self.stok_ad" Multiplicity="1" />
+    <End Role="stok" Type="Self.stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stok_ad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stok">
+        <PropertyRef Name="stok_ad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stok_ibfk_3">
+    <End Role="stok_birim" Type="Self.stok_birim" Multiplicity="1" />
+    <End Role="stok" Type="Self.stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stok_birim">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stok">
+        <PropertyRef Name="stok_birim_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ucret_ibfk_1">
+    <End Role="kisi" Type="Self.kisi" Multiplicity="1" />
+    <End Role="ucret" Type="Self.ucret" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ucret">
+        <PropertyRef Name="kisi_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ucret_ibfk_2">
+    <End Role="mekan" Type="Self.mekan" Multiplicity="1" />
+    <End Role="ucret" Type="Self.ucret" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mekan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ucret">
+        <PropertyRef Name="mekan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="otelModelStoreContainer">
+    <EntitySet Name="bakiye" EntityType="Self.bakiye" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="depo" EntityType="Self.depo" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="depo_stok" EntityType="Self.depo_stok" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="donanim" EntityType="Self.donanim" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="kart" EntityType="Self.kart" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="kisi" EntityType="Self.kisi" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="kisi_durum" EntityType="Self.kisi_durum" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="mekan" EntityType="Self.mekan" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="mekan_depo" EntityType="Self.mekan_depo" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="nakit_ciro" EntityType="Self.nakit_ciro" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="oda" EntityType="Self.oda" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="personel" EntityType="Self.personel" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="personel_depo" EntityType="Self.personel_depo" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="personel_donanim" EntityType="Self.personel_donanim" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="pozisyon" EntityType="Self.pozisyon" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="stok" EntityType="Self.stok" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="stok_ad" EntityType="Self.stok_ad" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="stok_birim" EntityType="Self.stok_birim" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="stok_grup" EntityType="Self.stok_grup" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="tur" EntityType="Self.tur" Schema="otel" store:Type="Tables" />
+    <EntitySet Name="ucret" EntityType="Self.ucret" Schema="otel" store:Type="Tables" />
+    <AssociationSet Name="bakiye_ibfk_1" Association="Self.bakiye_ibfk_1">
+      <End Role="kart" EntitySet="kart" />
+      <End Role="bakiye" EntitySet="bakiye" />
+    </AssociationSet>
+    <AssociationSet Name="depo_stok_ibfk_1" Association="Self.depo_stok_ibfk_1">
+      <End Role="depo" EntitySet="depo" />
+      <End Role="depo_stok" EntitySet="depo_stok" />
+    </AssociationSet>
+    <AssociationSet Name="depo_stok_ibfk_2" Association="Self.depo_stok_ibfk_2">
+      <End Role="stok" EntitySet="stok" />
+      <End Role="depo_stok" EntitySet="depo_stok" />
+    </AssociationSet>
+    <AssociationSet Name="donanim_ibfk_1" Association="Self.donanim_ibfk_1">
+      <End Role="tur" EntitySet="tur" />
+      <End Role="donanim" EntitySet="donanim" />
+    </AssociationSet>
+    <AssociationSet Name="kart_ibfk_1" Association="Self.kart_ibfk_1">
+      <End Role="kisi" EntitySet="kisi" />
+      <End Role="kart" EntitySet="kart" />
+    </AssociationSet>
+    <AssociationSet Name="kisi_ibfk_1" Association="Self.kisi_ibfk_1">
+      <End Role="kisi_durum" EntitySet="kisi_durum" />
+      <End Role="kisi" EntitySet="kisi" />
+    </AssociationSet>
+    <AssociationSet Name="mekan_depo_ibfk_1" Association="Self.mekan_depo_ibfk_1">
+      <End Role="mekan" EntitySet="mekan" />
+      <End Role="mekan_depo" EntitySet="mekan_depo" />
+    </AssociationSet>
+    <AssociationSet Name="mekan_depo_ibfk_2" Association="Self.mekan_depo_ibfk_2">
+      <End Role="depo" EntitySet="depo" />
+      <End Role="mekan_depo" EntitySet="mekan_depo" />
+    </AssociationSet>
+    <AssociationSet Name="nakit_ciro_ibfk_1" Association="Self.nakit_ciro_ibfk_1">
+      <End Role="kisi" EntitySet="kisi" />
+      <End Role="nakit_ciro" EntitySet="nakit_ciro" />
+    </AssociationSet>
+    <AssociationSet Name="oda_ibfk_1" Association="Self.oda_ibfk_1">
+      <End Role="kisi" EntitySet="kisi" />
+      <End Role="oda" EntitySet="oda" />
+    </AssociationSet>
+    <AssociationSet Name="personel_depo_ibfk_1" Association="Self.personel_depo_ibfk_1">
+      <End Role="personel" EntitySet="personel" />
+      <End Role="personel_depo" EntitySet="personel_depo" />
+    </AssociationSet>
+    <AssociationSet Name="personel_depo_ibfk_2" Association="Self.personel_depo_ibfk_2">
+      <End Role="depo" EntitySet="depo" />
+      <End Role="personel_depo" EntitySet="personel_depo" />
+    </AssociationSet>
+    <AssociationSet Name="personel_donanim_ibfk_1" Association="Self.personel_donanim_ibfk_1">
+      <End Role="personel" EntitySet="personel" />
+      <End Role="personel_donanim" EntitySet="personel_donanim" />
+    </AssociationSet>
+    <AssociationSet Name="personel_donanim_ibfk_2" Association="Self.personel_donanim_ibfk_2">
+      <End Role="donanim" EntitySet="donanim" />
+      <End Role="personel_donanim" EntitySet="personel_donanim" />
+    </AssociationSet>
+    <AssociationSet Name="personel_ibfk_1" Association="Self.personel_ibfk_1">
+      <End Role="pozisyon" EntitySet="pozisyon" />
+      <End Role="personel" EntitySet="personel" />
+    </AssociationSet>
+    <AssociationSet Name="stok_ibfk_1" Association="Self.stok_ibfk_1">
+      <End Role="stok_grup" EntitySet="stok_grup" />
+      <End Role="stok" EntitySet="stok" />
+    </AssociationSet>
+    <AssociationSet Name="stok_ibfk_2" Association="Self.stok_ibfk_2">
+      <End Role="stok_ad" EntitySet="stok_ad" />
+      <End Role="stok" EntitySet="stok" />
+    </AssociationSet>
+    <AssociationSet Name="stok_ibfk_3" Association="Self.stok_ibfk_3">
+      <End Role="stok_birim" EntitySet="stok_birim" />
+      <End Role="stok" EntitySet="stok" />
+    </AssociationSet>
+    <AssociationSet Name="ucret_ibfk_1" Association="Self.ucret_ibfk_1">
+      <End Role="kisi" EntitySet="kisi" />
+      <End Role="ucret" EntitySet="ucret" />
+    </AssociationSet>
+    <AssociationSet Name="ucret_ibfk_2" Association="Self.ucret_ibfk_2">
+      <End Role="mekan" EntitySet="mekan" />
+      <End Role="ucret" EntitySet="ucret" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

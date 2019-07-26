@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "KisiEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p align="center" style="padding:2% 0;">kişi ekle</p>
+
+<div class="container-fluid d-flex justify-content-center">
+
+
+    <form>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">ad soyad: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="ad_soyad">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">TC numarası: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="tc_no">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">kişi durumu: </label>
+            <div class="col-xs-9">
+                <select id="kisi_durum" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row" id="kdb">
+            <label class="col-xs-3 col-form-label mr-2">boş: </label>
+            <div class="col-xs-9">
+                <select id="kisi_durum_bos" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row" id="ck">
+            <label class="col-xs-3 col-form-label mr-2">çıkış tarihi: </label>
+            <div class="col-xs-9">
+                <input type="text" id="cikis_tarihi" class="form-control" >
+            </div>
+        </div>
+
+        <div class="form-group row" id="bs">
+            <label class="col-xs-3 col-form-label mr-2">birey sayısı: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="birey_sayisi">
+            </div>
+        </div>
+
+        <div class="form-group row" id="cs">
+            <label class="col-xs-3 col-form-label mr-2">çocuk sayısı: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="cocuk_sayisi">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="kayit" type="submit" class="btn btn-primary">kayit</button>
+            </div>
+        </div>
+
+        <label id="ekleme_durumu"></label>
+    </form>
+</div>
+
+<script>
+
+    
+    $(document).ready(function () {
+              
+        $("#cikis_tarihi").datepicker({
+            dateFormat: 'dd.mm.yy'
+        });
+
+        $("#kdb").hide();
+        $("#ck").hide();
+        $("#bs").hide();
+        $("#cs").hide();
+
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/KisiDurum",
+            dataType: "json",
+            success: function (returnedData) {
+
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>durum seçiniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].ad + '</option>';
+                }
+
+                $("#kisi_durum").html(s);
+
+            }
+        });
+
+
+    });
+
+    function durum(durumUrl) {
+        $.ajax({
+            type: "GET",
+            url: durumUrl,
+            dataType: "json",
+            success: function (returnedData) {
+                var data2 = returnedData.data;
+
+                var s = "<option disabled selected value>durum seçiniz</option>";
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].id + '</option>';
+                }
+
+                $("#kisi_durum_bos").html(s);
+
+            }
+        });
+    }
+
+
+
+    $("#kisi_durum").change(function () {
+
+
+        //$("#kdb").hide();
+        //$("#ck").hide();
+        //$("#bs").hide();
+        //$("#cs").hide();
+
+        //var durumUrl;
+
+        switch ($(this).val()) {
+            case "1":
+                console.log("1");
+                durum("/Home/BosOda");
+                $("#ck").show();
+                $("#kdb").show();
+                $("#bs").hide();
+                $("#cs").hide();
+                break;
+            case "2":
+                console.log("2");
+                durum("/Home/BosKart");
+                $("#kdb").show();
+                $("#ck").show();
+                $("#bs").show();
+                $("#cs").show();
+                break;
+            case "3":
+                console.log("3");
+                durum("/Home/BosKart");
+                $("#kdb").show();
+                $("#ck").hide();
+                $("#bs").show();
+                $("#cs").show();
+                break;
+        }
+
+
+        //$.ajax({
+        //    type: "GET",
+        //    url: durumUrl,
+        //    dataType: "json",
+        //    success: function (returnedData) {
+
+        //        var data2 = returnedData.data;
+
+        //        var s = "<option disabled selected value>durum seçiniz</option>";
+        //        for (var i = 0; i < data2.length; i++) {
+        //            s += '<option value="' + data2[i].id + '">' + data2[i].ad + '</option>';
+        //        }
+
+        //        $("#kisi_durum_bos").html(s);
+
+        //    }
+        //});
+    });
+
+
+    $("#kayit").click(function () {
+        console.log("kayit");
+        debugger;
+
+
+        var model = {
+            "adSoyad": $("#ad_soyad").val(),
+            "tcNo": $("#tc_no").val(),
+            "kisiDurumId": $("#kisi_durum").val(),
+            "id": $("#kisi_durum_bos").val(),
+            "cikisTarihi": $("#cikis_tarihi").val(),
+            "bireyHavuz": $("#birey_sayisi").val(),
+            "cocukHavuz": $("#cocuk_sayisi").val()
+        };
+        console.log(JSON.stringify(model));
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/KisiEkle",
+            data: model,
+            dataType: "json",
+            success: function (response) {
+                $("#ekleme_durumu").html(response.data);
+                alert(response.data);
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+
+    });
+
+
+
+</script>

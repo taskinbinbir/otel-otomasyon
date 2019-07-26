@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "KartliCikis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p align="center" style="padding:2% 0;">kartlı çıkış</p>
+
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form>
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">kart numarası: </label>
+            <div class="col-xs-9">
+                <select id="kart_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">nakit bakiye ekle </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="nakit_bakiye">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">kredi kart bakiye ekle </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="kredi_kart_bakiye">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="cikis_yap" type="submit" class="btn btn-primary">çıkış yap</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+    
+@*<div class="container-fluid d-flex justify-content-center">
+    <p class="text-justify" id="nakit_bakiye"></p>
+    <p class="text-justify" id="kredi_kart_bakiye"></p>
+</div>*@
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/DoluKartlar",
+            dataType: "json",
+            success: function (returnedData) {
+                debugger;
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>kart numarası seçiniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].id + '</option>';
+                }
+
+                $("#kart_id").html(s);
+
+            }
+        });
+
+    });
+
+    $("#kart_id").change(function () {
+
+        var model = {
+            "id": $("#kart_id").val()
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetKartBakiye",
+            dataType: "json",
+            data: model,
+            async: false,
+            success: function (returnedData) {
+                debugger;
+                var data = returnedData.data;
+                
+                $("#nakit_bakiye").val(data[0].nakit_bakiye);
+                $("#kredi_kart_bakiye").val(data[0].kredi_kart_bakiye);
+
+            }
+        });
+
+    });
+
+    $("#cikis_yap").click(function () {
+
+        var model = {
+            "id": $("#kart_id").val()
+        };
+
+        console.log(JSON.stringify(model));
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetKisiKartCikis",
+            data: model,
+            dataType: "json",
+            async: false,
+            success: function (response) {
+                alert("çıkış yapıldı");
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+
+    });
+
+</script>

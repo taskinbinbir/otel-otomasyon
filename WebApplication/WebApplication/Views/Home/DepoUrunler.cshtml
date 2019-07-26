@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "DepoUrunler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p align="center" style="padding:2% 0;">depo ürünler</p>
+
+<div class="container-fluid d-flex justify-content-center">
+    
+    <form>
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">depo: </label>
+            <div class="col-xs-9">
+                <select id="depo_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ad soyad</th>
+                <th scope="col">TC numarası</th>
+                <th scope="col">kart/oda/günü birlik</th>
+            </tr>
+        </thead>
+
+        <tbody id="urunler"></tbody>
+    </table>
+</div>
+
+
+<script>
+    
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetDepolar",
+            dataType: "json",
+            success: function (returnedData) {
+                var data = returnedData.data;
+                var s = '<option value="-1"disabled selected>depo seçiniz</option>';
+                for (var i = 0; i < data.length; i++) {                   
+                    s += '<option value="' + data[i].id + '">' + data[i].ad + '</option>';
+                }
+
+                $("#depo_id").html(s);
+
+            }
+        });
+
+    });
+
+
+    $("#depo_id").change(function () {
+
+        var model = {
+            "depoId": $("#depo_id").val()
+        };
+        debugger;
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetDepoUrun",
+            dataType: "json",
+            data: model,
+            success: function (returnedData) {
+                console.log(JSON.stringify(returnedData));
+                debugger;
+                var data = returnedData.data;
+                console.log(data.length);
+                console.log(JSON.stringify(data));
+                var s;
+                for (var i = 0; i < data.length; i++) {
+                    s += '<tr>' +
+                        '<td>' + data[i].sa + '</td>' +
+                        '<td>' + data[i].miktar + '</td>' +
+                        '<td>' + data[i].fiyat + '</td>' +
+                        '</tr>';
+                }
+
+                $("#urunler").html(s);
+
+            }
+        });
+
+    });
+
+        
+
+</script>

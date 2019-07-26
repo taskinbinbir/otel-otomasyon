@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfServiceApplication" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfServiceApplication" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="ArrayOfstok">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stok" nillable="true" type="tns:stok" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfstok" nillable="true" type="tns:ArrayOfstok" />
+  <xs:complexType name="stok">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="depo_stok" nillable="true" type="tns:ArrayOfdepo_stok" />
+      <xs:element minOccurs="0" name="fiyat" type="xs:decimal" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="miktar" type="xs:decimal" />
+      <xs:element minOccurs="0" name="stok_ad" nillable="true" type="tns:stok_ad" />
+      <xs:element minOccurs="0" name="stok_ad_id" type="xs:int" />
+      <xs:element minOccurs="0" name="stok_birim" nillable="true" type="tns:stok_birim" />
+      <xs:element minOccurs="0" name="stok_birim_id" type="xs:int" />
+      <xs:element minOccurs="0" name="stok_grup" nillable="true" type="tns:stok_grup" />
+      <xs:element minOccurs="0" name="stok_grup_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stok" nillable="true" type="tns:stok" />
+  <xs:complexType name="ArrayOfdepo_stok">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="depo_stok" nillable="true" type="tns:depo_stok" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfdepo_stok" nillable="true" type="tns:ArrayOfdepo_stok" />
+  <xs:complexType name="depo_stok">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="depo" nillable="true" type="tns:depo" />
+      <xs:element minOccurs="0" name="depo_id" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="stok" nillable="true" type="tns:stok" />
+      <xs:element minOccurs="0" name="stok_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="depo_stok" nillable="true" type="tns:depo_stok" />
+  <xs:complexType name="depo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="depo_stok" nillable="true" type="tns:ArrayOfdepo_stok" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="mekan_depo" nillable="true" type="tns:ArrayOfmekan_depo" />
+      <xs:element minOccurs="0" name="personel_depo" nillable="true" type="tns:ArrayOfpersonel_depo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="depo" nillable="true" type="tns:depo" />
+  <xs:complexType name="ArrayOfmekan_depo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mekan_depo" nillable="true" type="tns:mekan_depo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfmekan_depo" nillable="true" type="tns:ArrayOfmekan_depo" />
+  <xs:complexType name="mekan_depo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="depo" nillable="true" type="tns:depo" />
+      <xs:element minOccurs="0" name="depo_id" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="mekan" nillable="true" type="tns:mekan" />
+      <xs:element minOccurs="0" name="mekan_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mekan_depo" nillable="true" type="tns:mekan_depo" />
+  <xs:complexType name="mekan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="mekan_depo" nillable="true" type="tns:ArrayOfmekan_depo" />
+      <xs:element minOccurs="0" name="ucret" nillable="true" type="tns:ArrayOfucret" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mekan" nillable="true" type="tns:mekan" />
+  <xs:complexType name="ArrayOfucret">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ucret" nillable="true" type="tns:ucret" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfucret" nillable="true" type="tns:ArrayOfucret" />
+  <xs:complexType name="ucret">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kisi" nillable="true" type="tns:kisi" />
+      <xs:element minOccurs="0" name="kisi_id" type="xs:int" />
+      <xs:element minOccurs="0" name="masa" type="xs:int" />
+      <xs:element minOccurs="0" name="mekan" nillable="true" type="tns:mekan" />
+      <xs:element minOccurs="0" name="mekan_id" type="xs:int" />
+      <xs:element minOccurs="0" name="tarih" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ucret1" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="urunler" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ucret" nillable="true" type="tns:ucret" />
+  <xs:complexType name="kisi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad_soyad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kart" nillable="true" type="tns:ArrayOfkart" />
+      <xs:element minOccurs="0" name="kisi_durum" nillable="true" type="tns:kisi_durum" />
+      <xs:element minOccurs="0" name="kisi_durum_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="nakit_ciro" nillable="true" type="tns:ArrayOfnakit_ciro" />
+      <xs:element minOccurs="0" name="oda" nillable="true" type="tns:ArrayOfoda" />
+      <xs:element minOccurs="0" name="tc_no" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ucret" nillable="true" type="tns:ArrayOfucret" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="kisi" nillable="true" type="tns:kisi" />
+  <xs:complexType name="ArrayOfkart">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="kart" nillable="true" type="tns:kart" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfkart" nillable="true" type="tns:ArrayOfkart" />
+  <xs:complexType name="kart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bakiye" nillable="true" type="tns:ArrayOfbakiye" />
+      <xs:element minOccurs="0" name="birey_havuz" type="xs:int" />
+      <xs:element minOccurs="0" name="cocuk_havuz" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kisi" nillable="true" type="tns:kisi" />
+      <xs:element minOccurs="0" name="kisi_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="son_kullanma_tarihi" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="verilis_tarihi" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="kart" nillable="true" type="tns:kart" />
+  <xs:complexType name="ArrayOfbakiye">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bakiye" nillable="true" type="tns:bakiye" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfbakiye" nillable="true" type="tns:ArrayOfbakiye" />
+  <xs:complexType name="bakiye">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="deposito" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kart" nillable="true" type="tns:kart" />
+      <xs:element minOccurs="0" name="kart_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="kredi_kart_bakiye" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="nakit_bakiye" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="bakiye" nillable="true" type="tns:bakiye" />
+  <xs:complexType name="kisi_durum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kisi" nillable="true" type="tns:ArrayOfkisi" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="kisi_durum" nillable="true" type="tns:kisi_durum" />
+  <xs:complexType name="ArrayOfkisi">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="kisi" nillable="true" type="tns:kisi" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfkisi" nillable="true" type="tns:ArrayOfkisi" />
+  <xs:complexType name="ArrayOfnakit_ciro">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="nakit_ciro" nillable="true" type="tns:nakit_ciro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfnakit_ciro" nillable="true" type="tns:ArrayOfnakit_ciro" />
+  <xs:complexType name="nakit_ciro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kisi" nillable="true" type="tns:kisi" />
+      <xs:element minOccurs="0" name="kisi_id" type="xs:int" />
+      <xs:element minOccurs="0" name="tarih" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="tutar" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="nakit_ciro" nillable="true" type="tns:nakit_ciro" />
+  <xs:complexType name="ArrayOfoda">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="oda" nillable="true" type="tns:oda" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfoda" nillable="true" type="tns:ArrayOfoda" />
+  <xs:complexType name="oda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cikis_tarihi" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="giris_tarihi" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kisi" nillable="true" type="tns:kisi" />
+      <xs:element minOccurs="0" name="kisi_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ucret" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="oda" nillable="true" type="tns:oda" />
+  <xs:complexType name="ArrayOfpersonel_depo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="personel_depo" nillable="true" type="tns:personel_depo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfpersonel_depo" nillable="true" type="tns:ArrayOfpersonel_depo" />
+  <xs:complexType name="personel_depo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="depo" nillable="true" type="tns:depo" />
+      <xs:element minOccurs="0" name="depo_id" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="personel" nillable="true" type="tns:personel" />
+      <xs:element minOccurs="0" name="personel_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="personel_depo" nillable="true" type="tns:personel_depo" />
+  <xs:complexType name="personel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad_soyad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="kart_id" type="xs:int" />
+      <xs:element minOccurs="0" name="personel_depo" nillable="true" type="tns:ArrayOfpersonel_depo" />
+      <xs:element minOccurs="0" name="personel_donanim" nillable="true" type="tns:ArrayOfpersonel_donanim" />
+      <xs:element minOccurs="0" name="pozisyon" nillable="true" type="tns:pozisyon" />
+      <xs:element minOccurs="0" name="pozisyon_id" type="xs:int" />
+      <xs:element minOccurs="0" name="sifre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tc_no" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="personel" nillable="true" type="tns:personel" />
+  <xs:complexType name="ArrayOfpersonel_donanim">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="personel_donanim" nillable="true" type="tns:personel_donanim" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfpersonel_donanim" nillable="true" type="tns:ArrayOfpersonel_donanim" />
+  <xs:complexType name="personel_donanim">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="donanim" nillable="true" type="tns:donanim" />
+      <xs:element minOccurs="0" name="donanim_id" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="personel" nillable="true" type="tns:personel" />
+      <xs:element minOccurs="0" name="personel_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="personel_donanim" nillable="true" type="tns:personel_donanim" />
+  <xs:complexType name="donanim">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="paylasilan_alan_ip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="personel_donanim" nillable="true" type="tns:ArrayOfpersonel_donanim" />
+      <xs:element minOccurs="0" name="tur" nillable="true" type="tns:tur" />
+      <xs:element minOccurs="0" name="tur_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="donanim" nillable="true" type="tns:donanim" />
+  <xs:complexType name="tur">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="donanim" nillable="true" type="tns:ArrayOfdonanim" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tur" nillable="true" type="tns:tur" />
+  <xs:complexType name="ArrayOfdonanim">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="donanim" nillable="true" type="tns:donanim" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfdonanim" nillable="true" type="tns:ArrayOfdonanim" />
+  <xs:complexType name="pozisyon">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="personel" nillable="true" type="tns:ArrayOfpersonel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="pozisyon" nillable="true" type="tns:pozisyon" />
+  <xs:complexType name="ArrayOfpersonel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="personel" nillable="true" type="tns:personel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfpersonel" nillable="true" type="tns:ArrayOfpersonel" />
+  <xs:complexType name="stok_ad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="stok" nillable="true" type="tns:ArrayOfstok" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stok_ad" nillable="true" type="tns:stok_ad" />
+  <xs:complexType name="stok_birim">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="stok" nillable="true" type="tns:ArrayOfstok" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stok_birim" nillable="true" type="tns:stok_birim" />
+  <xs:complexType name="stok_grup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="stok" nillable="true" type="tns:ArrayOfstok" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stok_grup" nillable="true" type="tns:stok_grup" />
+</xs:schema>

@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "StokOzellikleriEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p align="center" style="padding:2% 0;">stok özellikleri ekle</p>
+
+<div class="container">
+    <form >
+        <div class="form-row" style="padding: 10px;">
+            <div class="col">
+                <div class="row">
+                    <input type="text" class="form-control" placeholder="stok ad" id="stok_ad">
+                </div>
+                <div class="row">
+                    <button id="stok_ad_ekle" type="submit" class="btn btn-primary">stok ad ekle</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <input type="text" class="form-control" placeholder="stok grup" id="stok_grup">
+                </div>
+                <div class="row">
+                    <button id="stok_grup_ekle" type="submit" class="btn btn-primary">stok grup ekle</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <input type="text" class="form-control" placeholder="birim" id="birim">
+                </div>
+                <div class="row">
+                    <button id="birim_ekle" type="submit" class="btn btn-primary">birim ekle</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    
+    $("#stok_ad_ekle").click(function () {
+        debugger;
+        var model = {
+            "ad": $("#stok_ad").val(),
+        };
+
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetStokAd",
+            data: model,
+            dataType: "json",
+            success: function (response) {
+                alert(response.data);
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+    });
+
+    $("#stok_grup_ekle").click(function () {
+        debugger;
+        var model = {
+            "ad": $("#stok_grup").val(),
+        };
+        
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetStokGroup",
+            data: model,
+            dataType: "json",
+            success: function (response) {
+                alert(response.data);
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+    });
+
+    $("#birim_ekle").click(function () {
+        debugger;
+        var model = {
+            "ad": $("#birim").val(),
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetBirim",
+            data: model,
+            dataType: "json",
+            success: function (response) {
+                alert(response.data);
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+    });
+
+
+</script>

@@ -1,0 +1,313 @@
+﻿
+@{
+    ViewBag.Title = "KisiEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p align="center" style="padding:2% 0;">ödeme</p>
+
+<div class="container-fluid d-flex justify-content-center">
+
+
+    <form>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">mekan: </label>
+            <div class="col-xs-9">
+                <select id="mekan_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="container clearfix" id="urunTablo">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">depo adı</th>
+                <th scope="col">adı</th>
+                <th scope="col">birim fiyatı</th>
+                <th scope="col">grubu</th>
+                <th scope="col">miktar</th>
+                <th scope="col">istenen miktar</th>
+                <th scope="col">toplam fiyat</th>
+            </tr>
+        </thead>
+
+        <tbody id="urunler"></tbody>
+    </table>
+
+    <label id="brut_toplam"></label>
+
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
+    <div class="form-group row">
+        <div class="offset-xs-3 col-xs-9">
+            <button id="hesapla" type="submit" class="btn btn-primary">hesapla</button>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">kişi durumu: </label>
+            <div class="col-xs-9">
+                <select id="kisi_durum" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row" id="kdb">
+            <label class="col-xs-3 col-form-label mr-2">numarası: </label>
+            <div class="col-xs-9">
+                <select id="kisi_durum_dolu" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row" id="mn">
+            <label class="col-xs-3 col-form-label mr-2">masa numarasi: </label>
+            <div class="col-xs-9">
+                <input type="text" id="masa_numarasi" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="odeme" type="submit" class="btn btn-primary">ödeme</button>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+
+<script>
+
+    $("#hesapla").hide();
+    $("#kdb").hide();
+    $("#mn").hide();
+    $("#odeme").hide();
+
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetMekan",
+            dataType: "json",
+            success: function (returnedData) {
+
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>durum seçiniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].ad + '</option>';
+                }
+
+                $("#mekan_id").html(s);
+
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/KisiDurum",
+            dataType: "json",
+            success: function (returnedData) {
+
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>durum seçiniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].ad + '</option>';
+                }
+
+                $("#kisi_durum").html(s);
+
+            }
+        });
+
+    });
+
+    function durum(durumUrl) {
+        $("#kdb").show();
+        $("#mn").show();
+        $("#odeme").show();
+
+        $.ajax({
+            type: "GET",
+            url: durumUrl,
+            dataType: "json",
+            success: function (returnedData) {
+                var data2 = returnedData.data;
+
+                var s = "<option disabled selected value>durum seçiniz</option>";
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].id + '</option>';
+                }
+
+                $("#kisi_durum_dolu").html(s);
+
+            }
+        });
+    }
+
+    $("#kisi_durum").change(function () {
+        switch ($(this).val()) {
+            case "1":
+                durum("/Home/DoluOdalar");
+                break;
+            case "2":
+                durum("/Home/DoluKartlar");
+                break;
+            case "3":
+                durum("/Home/DoluKartlar");
+                break;
+        }
+    });
+
+
+    var gonderilecekData;
+    var globalData;
+    function callback(response) {
+        globalData = response;
+        gonderilecekData = response;
+    }
+
+
+    $("#mekan_id").change(function () {
+        $("#hesapla").show();
+
+        var model = {
+            "id": $("#mekan_id").val()
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetMekanStok",
+            data: model,
+            dataType: "json",
+            success: function (returnedData) {
+
+                var data = returnedData.data;
+                callback(data);
+                var s;
+
+                for (var i = 0; i < data.length; i++) {
+
+                    var deger = data[i].stokId;
+
+                    s += '<tr>' +
+                        '<td>' + data[i].depoAdi + '</td>' +
+                        '<td>' + data[i].ad + '</td>' +
+                        '<td>' + data[i].fiyat + '</td>' +
+                        '<td>' + data[i].grup + '</td>' +
+                        '<td>' + data[i].miktar + '</td>' +
+                        '<td><input id="' + deger + '" type="number" min="0" max="' + data[i].miktar + '" value="" /></td>' +
+                        '<td><label></label></td>' +
+                        '</tr>';
+                }
+
+                $("#urunler").html(s);
+            }
+        });
+    });
+
+
+    var toplamFiyatlar = [];
+    var toplam = 0;
+
+    $("#hesapla").click(function () {
+        while (toplamFiyatlar.length > 0) {
+            toplamFiyatlar.pop();
+        }
+        toplam = 0;
+
+        event.preventDefault();
+        $("#urunler tr td input").each(function (i) {
+            //alert("Fading out element " + i + ": " + $(this).attr("id") + " " + $(this).val());
+            //var idsi = $(this).attr("id");
+            //var degeri = $(this).val();
+            //alert(globalData[i].fiyat * $(this).val());
+            gonderilecekData[i].id = globalData[i].stokId;
+            gonderilecekData[i].miktar = $(this).val();
+            gonderilecekData[i].fiyat = globalData[i].fiyat * $(this).val();
+
+            toplamFiyatlar.push(globalData[i].fiyat * $(this).val());
+            //$(this).fadeOut();
+        });
+
+        //alert(toplamFiyatlar);
+
+
+        $("#urunler tr td label").each(function (i) {
+
+            $(this).html(toplamFiyatlar[i]);
+            toplam += toplamFiyatlar[i];
+
+        });
+        $("#brut_toplam").html("toplam: " + toplam);
+
+        //alert(JSON.stringify(gonderilecekData));
+    });
+
+    $("#odeme").click(function () {
+
+        var model = {
+            "id": $("#kisi_durum_dolu").val(),
+            "mekanId": $("#mekan_id").val(),
+            "masaId": $("#masa_numarasi").val(),
+            "ucret:": 0,
+            "urunMiktar": gonderilecekData
+        };
+        console.log(JSON.stringify(model));
+
+
+        if ($("#kisi_durum").val() == 1) {
+   
+            $.ajax({
+                type: "POST",
+                url: "/Home/SetOdaMekan",
+                data: model,
+                dataType: "json",
+                async: false,
+                success: function (response) {
+                    alert("başarılı");
+                },
+                failure: function (response) {
+                    alert("failure");
+                },
+                error: function (response) {
+                    alert("error");
+                }
+            });
+
+        }
+        else if (($("#kisi_durum").val() == 2) || ($("#kisi_durum").val() == 3)) {
+        
+            $.ajax({
+                type: "POST",
+                url: "/Home/SetKartMekan",
+                data: model,
+                dataType: "json",
+                async: false,
+                success: function (response) {
+                    alert("başarılı");
+                },
+                failure: function (response) {
+                    alert("failure");
+                },
+                error: function (response) {
+                    alert("error");
+                }
+            });
+        }
+    });
+
+
+</script>

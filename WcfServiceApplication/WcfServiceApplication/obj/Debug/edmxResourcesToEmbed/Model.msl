@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="otelModelStoreContainer" CdmEntityContainer="otelEntities">
+    <EntitySetMapping Name="bakiye">
+      <EntityTypeMapping TypeName="otelModel.bakiye">
+        <MappingFragment StoreEntitySet="bakiye">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kart_id" ColumnName="kart_id" />
+          <ScalarProperty Name="kredi_kart_bakiye" ColumnName="kredi_kart_bakiye" />
+          <ScalarProperty Name="nakit_bakiye" ColumnName="nakit_bakiye" />
+          <ScalarProperty Name="deposito" ColumnName="deposito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="depo">
+      <EntityTypeMapping TypeName="otelModel.depo">
+        <MappingFragment StoreEntitySet="depo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="depo_stok">
+      <EntityTypeMapping TypeName="otelModel.depo_stok">
+        <MappingFragment StoreEntitySet="depo_stok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="depo_id" ColumnName="depo_id" />
+          <ScalarProperty Name="stok_id" ColumnName="stok_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="donanim">
+      <EntityTypeMapping TypeName="otelModel.donanim">
+        <MappingFragment StoreEntitySet="donanim">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="tur_id" ColumnName="tur_id" />
+          <ScalarProperty Name="paylasilan_alan_ip" ColumnName="paylasilan_alan_ip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kart">
+      <EntityTypeMapping TypeName="otelModel.kart">
+        <MappingFragment StoreEntitySet="kart">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kisi_id" ColumnName="kisi_id" />
+          <ScalarProperty Name="verilis_tarihi" ColumnName="verilis_tarihi" />
+          <ScalarProperty Name="son_kullanma_tarihi" ColumnName="son_kullanma_tarihi" />
+          <ScalarProperty Name="birey_havuz" ColumnName="birey_havuz" />
+          <ScalarProperty Name="cocuk_havuz" ColumnName="cocuk_havuz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kisi">
+      <EntityTypeMapping TypeName="otelModel.kisi">
+        <MappingFragment StoreEntitySet="kisi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tc_no" ColumnName="tc_no" />
+          <ScalarProperty Name="ad_soyad" ColumnName="ad_soyad" />
+          <ScalarProperty Name="kisi_durum_id" ColumnName="kisi_durum_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kisi_durum">
+      <EntityTypeMapping TypeName="otelModel.kisi_durum">
+        <MappingFragment StoreEntitySet="kisi_durum">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mekan">
+      <EntityTypeMapping TypeName="otelModel.mekan">
+        <MappingFragment StoreEntitySet="mekan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mekan_depo">
+      <EntityTypeMapping TypeName="otelModel.mekan_depo">
+        <MappingFragment StoreEntitySet="mekan_depo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mekan_id" ColumnName="mekan_id" />
+          <ScalarProperty Name="depo_id" ColumnName="depo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nakit_ciro">
+      <EntityTypeMapping TypeName="otelModel.nakit_ciro">
+        <MappingFragment StoreEntitySet="nakit_ciro">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kisi_id" ColumnName="kisi_id" />
+          <ScalarProperty Name="tutar" ColumnName="tutar" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oda">
+      <EntityTypeMapping TypeName="otelModel.oda">
+        <MappingFragment StoreEntitySet="oda">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kisi_id" ColumnName="kisi_id" />
+          <ScalarProperty Name="giris_tarihi" ColumnName="giris_tarihi" />
+          <ScalarProperty Name="cikis_tarihi" ColumnName="cikis_tarihi" />
+          <ScalarProperty Name="ucret" ColumnName="ucret" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personel">
+      <EntityTypeMapping TypeName="otelModel.personel">
+        <MappingFragment StoreEntitySet="personel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tc_no" ColumnName="tc_no" />
+          <ScalarProperty Name="ad_soyad" ColumnName="ad_soyad" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="kart_id" ColumnName="kart_id" />
+          <ScalarProperty Name="pozisyon_id" ColumnName="pozisyon_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personel_depo">
+      <EntityTypeMapping TypeName="otelModel.personel_depo">
+        <MappingFragment StoreEntitySet="personel_depo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="depo_id" ColumnName="depo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personel_donanim">
+      <EntityTypeMapping TypeName="otelModel.personel_donanim">
+        <MappingFragment StoreEntitySet="personel_donanim">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="donanim_id" ColumnName="donanim_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pozisyon">
+      <EntityTypeMapping TypeName="otelModel.pozisyon">
+        <MappingFragment StoreEntitySet="pozisyon">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stok">
+      <EntityTypeMapping TypeName="otelModel.stok">
+        <MappingFragment StoreEntitySet="stok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="stok_grup_id" ColumnName="stok_grup_id" />
+          <ScalarProperty Name="stok_ad_id" ColumnName="stok_ad_id" />
+          <ScalarProperty Name="stok_birim_id" ColumnName="stok_birim_id" />
+          <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+          <ScalarProperty Name="miktar" ColumnName="miktar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stok_ad">
+      <EntityTypeMapping TypeName="otelModel.stok_ad">
+        <MappingFragment StoreEntitySet="stok_ad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stok_birim">
+      <EntityTypeMapping TypeName="otelModel.stok_birim">
+        <MappingFragment StoreEntitySet="stok_birim">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stok_grup">
+      <EntityTypeMapping TypeName="otelModel.stok_grup">
+        <MappingFragment StoreEntitySet="stok_grup">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tur">
+      <EntityTypeMapping TypeName="otelModel.tur">
+        <MappingFragment StoreEntitySet="tur">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ucret">
+      <EntityTypeMapping TypeName="otelModel.ucret">
+        <MappingFragment StoreEntitySet="ucret">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kisi_id" ColumnName="kisi_id" />
+          <ScalarProperty Name="mekan_id" ColumnName="mekan_id" />
+          <ScalarProperty Name="masa" ColumnName="masa" />
+          <ScalarProperty Name="urunler" ColumnName="urunler" />
+          <ScalarProperty Name="ucret1" ColumnName="ucret" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

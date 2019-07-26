@@ -1,0 +1,284 @@
+﻿@{
+    ViewBag.Title = "DepoUrunEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p align="center" style="padding:2% 0;">depoya ürün ekle</p>
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">depo: </label>
+            <div class="col-xs-9">
+                <select id="depo_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">ürün ekleme: </label>
+            <div class="col-xs-9">
+                <select id="urun_ekle" class="form-control" data-live-search="true">
+                    <option value="-1" disabled selected>seçiniz</option>
+                    <option value="1">mevcut ürün ekle</option>
+                    <option value="2">yeni ürün ekle</option>
+                </select>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form id="yeni_urun">
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">grup: </label>
+            <div class="col-xs-9">
+                <select id="stok_grup_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">ad: </label>
+            <div class="col-xs-9">
+                <select id="stok_ad_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">birim: </label>
+            <div class="col-xs-9">
+                <select id="stok_birim_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">miktar: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="miktar" placeholder="miktar">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">fiyat: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="fiyat" placeholder="fiyat">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="yeni_ekle" type="submit" class="btn btn-primary">ekle</button>
+            </div>
+        </div>
+
+    </form>
+
+    <form id="mevcut_urun">
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">ürün adı: </label>
+            <div class="col-xs-9">
+                <select id="stok_id" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">miktar: </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="mevcut_miktar" placeholder="miktar">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="mevcut_ekle" type="submit" class="btn btn-primary">ekle</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+
+    $("#yeni_urun").hide();
+    $("#mevcut_urun").hide();
+
+    $.ajax({
+        type: "GET",
+        url: "/Home/GetDepolar",
+        dataType: "json",
+        success: function (returnedData) {
+            var data = returnedData.data;
+            var s = '<option value="-1"disabled selected>depo seçiniz</option>';
+            for (var i = 0; i < data.length; i++) {
+                s += '<option value="' + data[i].id + '">' + data[i].ad + '</option>';
+            }
+
+            $("#depo_id").html(s);
+
+        }
+    });
+
+    $("#urun_ekle").change(function () {
+        secenek = $("#urun_ekle").val();
+
+        switch (secenek) {
+            case "1":
+                mevcutUrun();
+                alert(1);
+
+                break;
+            case "2":
+                yeniUrun();
+                break;
+        }
+
+    });
+
+
+    function yeniUrun() {
+        $("#yeni_urun").show();
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetStokGroup",
+            dataType: "json",
+            success: function (returnedData) {
+                var data = returnedData.data;
+                var s = '<option value="-1"disabled selected>grup seçiniz</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].id + '">' + data[i].ad + '</option>';
+                }
+
+                $("#stok_grup_id").html(s);
+
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetStokAd",
+            dataType: "json",
+            success: function (returnedData) {
+                var data = returnedData.data;
+                var s = '<option value="-1"disabled selected>grup seçiniz</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].id + '">' + data[i].ad + '</option>';
+                }
+
+                $("#stok_ad_id").html(s);
+
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetBirim",
+            dataType: "json",
+            success: function (returnedData) {
+                var data = returnedData.data;
+                var s = '<option value="-1"disabled selected>grup seçiniz</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].id + '">' + data[i].ad + '</option>';
+                }
+
+                $("#stok_birim_id").html(s);
+
+            }
+        });
+    }
+
+    $("#yeni_ekle").click(function () {
+        debugger;
+        var model = {
+            "depoId": $("#depo_id").val(),
+            "stok_grup_id": $("#stok_grup_id").val(),
+            "stok_ad_id": $("#stok_ad_id").val(),
+            "stok_birim_id": $("#stok_birim_id").val(),
+            "miktar": $("#miktar").val(),
+            "fiyat": $("#fiyat").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetDepoYeniUrun",
+            dataType: "json",
+            data: model,
+            async: false,
+            success: function (response) {
+                alert("success");
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+
+        });
+
+    });
+
+
+    function mevcutUrun() {
+        $("#yeni_urun").hide();
+        $("#mevcut_urun").show();
+        debugger;
+
+        var model = {
+            "depoId": $("#depo_id").val(),
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetDepoUrun",
+            dataType: "json",
+            data: model,
+            success: function (returnedData) {
+                var data = returnedData.data;
+                var s = '<option value="-1"disabled selected>ürün seçiniz</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].id + '">' + data[i].sa + '</option>';
+                }
+
+                $("#stok_id").html(s);
+
+            }
+        });
+    }
+
+    $("#mevcut_ekle").click(function () {
+        debugger;
+        var model = {
+            "id": $("#stok_id").val(),
+            "miktar": $("#mevcut_miktar").val(),
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetDepoUrunEkle",
+            dataType: "json",
+            data: model,
+            async: false,
+            success: function (response) {
+                alert("success");
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+
+    });
+
+</script>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Kisiler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p align="center" style="padding:2% 0;">kisiler</p>
+
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ad soyad</th>
+                <th scope="col">TC numarası</th>
+                <th scope="col">kart/oda/günü birlik</th>
+            </tr>
+        </thead>
+
+        <tbody id="kisiler">
+           
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+       
+        $.ajax({
+            type: "GET",
+            url: "/Home/Kisiler",
+            dataType: "json",
+            success: function (returnedData) {
+                debugger;
+                var data2 = returnedData.data;
+                count = 1;
+                
+                var s;
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<tr>' + 
+                        '<th scope="row">' + count++ + '</th>' +
+                        '<td>' + data2[i].ad_soyad + '</td>' +
+                        '<td>' + data2[i].tc_no + '</td>' +
+                        '<td>' + data2[i].ad + '</td>' +
+                        '</tr>';
+                }
+                                
+                $("#kisiler").html(s);
+                
+            }
+        });
+
+    });
+
+</script>

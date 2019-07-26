@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "PersonelDonanim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p align="center" style="padding:2% 0;">personel donanim</p>
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form>
+
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">personel: </label>
+            <div class="col-xs-9">
+                <select id="personel" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">donanim: </label>
+            <div class="col-xs-9">
+                <select id="donanim" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+                      
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="iliskilendir" type="submit" class="btn btn-primary">ilişkilendir</button>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetPersonel",
+            dataType: "json",
+            success: function (returnedData) {
+                debugger;
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>personel seciniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].ad_soyad + '</option>';
+                }
+
+                $("#personel").html(s);
+
+            }
+        });
+
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetDonanim",
+            dataType: "json",
+            success: function (returnedData) {
+                debugger;
+                var data2 = returnedData.data;
+
+                var s = '<option value="-1"disabled selected>donanim seciniz</option>';
+                for (var i = 0; i < data2.length; i++) {
+                    s += '<option value="' + data2[i].id + '">' + data2[i].ad + '</option>';
+                }
+
+                $("#donanim").html(s);
+
+            }
+        });
+
+    });
+
+    $("#iliskilendir").click(function () {
+        debugger;
+        var model = {
+            "personel_id": $("#personel").val(),
+            "donanim_id": $("#donanim").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetPersonelDonanim",
+            data: model,
+            dataType: "json",
+            async: false,
+            success: function (response) {
+                alert("eklendi");
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+    });
+
+
+</script>

@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "OdaliCikis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <form>
+
+
+        <div class="form-group row" id="kdb">
+            <label class="col-xs-3 col-form-label mr-2">oda numarası: </label>
+            <div class="col-xs-9">
+                <select id="oda" class="form-control" data-live-search="true"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label mr-2">nakit bakiye ekle </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="ucret">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="offset-xs-3 col-xs-9">
+                <button id="cikis" type="submit" class="btn btn-primary">çıkış yap</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+<script>
+
+    $.ajax({
+        type: "GET",
+        url: "/Home/DoluOdalar",
+        dataType: "json",
+        success: function (returnedData) {
+            var data = returnedData.data;
+
+            var s = "<option disabled selected value>oda</option>";
+            for (var i = 0; i < data.length; i++) {
+                s += '<option value="' + data[i].id + '">' + data[i].id + '</option>';
+            }
+
+            $("#oda").html(s);
+
+        }
+    });
+
+    $("#oda").change(function () {
+               
+        var model = {
+            "id": $("#oda").val()
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetOdaUcret",
+            dataType: "json",
+            data: model,
+            success: function (returnedData) {
+                var data = returnedData.data;
+
+                $("#ucret").val(data[0].ucret);
+            }
+        });
+
+    });
+
+    $("#cikis").click(function () {
+        var model = {
+            "id": $("#oda").val()
+        };
+
+        console.log(JSON.stringify(model));
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/SetKisiOdaCikis",
+            data: model,
+            dataType: "json",
+            async: false,
+            success: function (response) {
+                alert("çıkış yapıldı");
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("error");
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:51966/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:51966/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:51966/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfServiceApplication" />
+      <xsd:import schemaLocation="http://localhost:51966/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfServiceApplication.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisiler_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisiler" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisiler_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisilerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKisiEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetKisiEkle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKisiEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetKisiEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetOda_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetOda" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetOda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetOdaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKart_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetKart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetKartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetOdaMekan_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetOdaMekan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetOdaMekan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetOdaMekanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKartMekan_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetKartMekan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKartMekan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetKartMekanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStokGrup_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetStokGrup" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStokGrup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetStokGrupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStokGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStokGroup" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStokGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStokGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStokAd_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetStokAd" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStokAd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetStokAdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStok_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStok" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStok_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStokResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetBirim_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBirim" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetBirim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBirimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBirim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBirim" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBirim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBirimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDepolar_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepolar" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDepolar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepolarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetMekanDepo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetMekanDepo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetMekanDepo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetMekanDepoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMekanDepo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMekanDepo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMekanDepo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMekanDepoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPozisyon_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPozisyon" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPozisyon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPozisyonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPozisyon_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPozisyon" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPozisyon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPozisyonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDonanim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDonanim" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDonanim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDonanimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPersonel_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPersonel" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPersonel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPersonelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonel" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelDepo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelDepo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelDepo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelDepoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelDonanim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelDonanim" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelDonanim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelDonanimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelIdDonanim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelIdDonanim" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPersonelIdDonanim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelIdDonanimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_MekanStok_InputMessage">
+    <wsdl:part name="parameters" element="tns:MekanStok" />
+  </wsdl:message>
+  <wsdl:message name="IService1_MekanStok_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MekanStokResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStok_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetStok" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStok_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetStokResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisilerBakiye_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisilerBakiye" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisilerBakiye_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisilerBakiyeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisiDurum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisiDurum" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisiDurum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisiDurumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOda_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOda" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOdaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBosKart_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBosKart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBosKart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBosKartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDoluKart_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoluKart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDoluKart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoluKartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetBakiyeEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBakiyeEkle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetBakiyeEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBakiyeEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetMekan_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetMekan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetMekan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetMekanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMekanStok_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMekanStok" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMekanStok_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMekanStokResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStockEksilt_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetStockEksilt" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetStockEksilt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetStockEksiltResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMekan_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMekan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMekan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMekanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDoluOda_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoluOda" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDoluOda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoluOdaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepoUrun_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepoUrun" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepoUrun_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepoUrunResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKartBakiye_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKartBakiye" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKartBakiye_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKartBakiyeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKartOdeme_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKartOdeme" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKartOdeme_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKartOdemeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOdaOdeme_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOdaOdeme" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOdaOdeme_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOdaOdemeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisiBakiye_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisiBakiye" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKisiBakiye_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKisiBakiyeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKisiKartCikis_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetKisiKartCikis" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKisiKartCikis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetKisiKartCikisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKisiOdaCikis_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetKisiOdaCikis" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetKisiOdaCikis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetKisiOdaCikisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPersonelDepo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPersonelDepo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPersonelDepo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPersonelDepoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPersonelDonanim_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPersonelDonanim" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPersonelDonanim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPersonelDonanimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDonanim_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDonanim" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDonanim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDonanimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepoYeniUrun_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepoYeniUrun" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepoYeniUrun_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepoYeniUrunResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDepoUrun_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepoUrun" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDepoUrun_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepoUrunResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepoUrunEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepoUrunEkle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetDepoUrunEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDepoUrunEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStokAd_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStokAd" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStokAd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStokAdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOdaUcret_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOdaUcret" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOdaUcret_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOdaUcretResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTur_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTur" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTurResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKisiler">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetKisiler" message="tns:IService1_GetKisiler_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetKisilerResponse" message="tns:IService1_GetKisiler_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetKisiEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetKisiEkle" message="tns:IService1_SetKisiEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetKisiEkleResponse" message="tns:IService1_SetKisiEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetOda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetOda" message="tns:IService1_SetOda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetOdaResponse" message="tns:IService1_SetOda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetKart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetKart" message="tns:IService1_SetKart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetKartResponse" message="tns:IService1_SetKart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetOdaMekan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetOdaMekan" message="tns:IService1_SetOdaMekan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetOdaMekanResponse" message="tns:IService1_SetOdaMekan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetKartMekan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetKartMekan" message="tns:IService1_SetKartMekan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetKartMekanResponse" message="tns:IService1_SetKartMekan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStokGrup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetStokGrup" message="tns:IService1_SetStokGrup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetStokGrupResponse" message="tns:IService1_SetStokGrup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStokGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStokGroup" message="tns:IService1_GetStokGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStokGroupResponse" message="tns:IService1_GetStokGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStokAd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetStokAd" message="tns:IService1_SetStokAd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetStokAdResponse" message="tns:IService1_SetStokAd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStok">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStok" message="tns:IService1_GetStok_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStokResponse" message="tns:IService1_GetStok_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBirim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetBirim" message="tns:IService1_SetBirim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetBirimResponse" message="tns:IService1_SetBirim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBirim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBirim" message="tns:IService1_GetBirim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBirimResponse" message="tns:IService1_GetBirim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepolar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDepolar" message="tns:IService1_GetDepolar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDepolarResponse" message="tns:IService1_GetDepolar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMekanDepo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetMekanDepo" message="tns:IService1_SetMekanDepo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetMekanDepoResponse" message="tns:IService1_SetMekanDepo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMekanDepo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMekanDepo" message="tns:IService1_GetMekanDepo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMekanDepoResponse" message="tns:IService1_GetMekanDepo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPozisyon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPozisyon" message="tns:IService1_SetPozisyon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPozisyonResponse" message="tns:IService1_SetPozisyon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPozisyon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPozisyon" message="tns:IService1_GetPozisyon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPozisyonResponse" message="tns:IService1_GetPozisyon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDonanim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDonanim" message="tns:IService1_GetDonanim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDonanimResponse" message="tns:IService1_GetDonanim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPersonel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPersonel" message="tns:IService1_SetPersonel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPersonelResponse" message="tns:IService1_SetPersonel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPersonel" message="tns:IService1_GetPersonel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPersonelResponse" message="tns:IService1_GetPersonel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPersonelId" message="tns:IService1_GetPersonelId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPersonelIdResponse" message="tns:IService1_GetPersonelId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelDepo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPersonelDepo" message="tns:IService1_GetPersonelDepo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPersonelDepoResponse" message="tns:IService1_GetPersonelDepo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelDonanim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPersonelDonanim" message="tns:IService1_GetPersonelDonanim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPersonelDonanimResponse" message="tns:IService1_GetPersonelDonanim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelIdDonanim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPersonelIdDonanim" message="tns:IService1_GetPersonelIdDonanim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPersonelIdDonanimResponse" message="tns:IService1_GetPersonelIdDonanim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MekanStok">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/MekanStok" message="tns:IService1_MekanStok_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/MekanStokResponse" message="tns:IService1_MekanStok_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStok">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetStok" message="tns:IService1_SetStok_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetStokResponse" message="tns:IService1_SetStok_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKisilerBakiye">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetKisilerBakiye" message="tns:IService1_GetKisilerBakiye_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetKisilerBakiyeResponse" message="tns:IService1_GetKisilerBakiye_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKisiDurum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetKisiDurum" message="tns:IService1_GetKisiDurum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetKisiDurumResponse" message="tns:IService1_GetKisiDurum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetOda" message="tns:IService1_GetOda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetOdaResponse" message="tns:IService1_GetOda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBosKart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBosKart" message="tns:IService1_GetBosKart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBosKartResponse" message="tns:IService1_GetBosKart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoluKart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDoluKart" message="tns:IService1_GetDoluKart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDoluKartResponse" message="tns:IService1_GetDoluKart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBakiyeEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetBakiyeEkle" message="tns:IService1_SetBakiyeEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetBakiyeEkleResponse" message="tns:IService1_SetBakiyeEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMekan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetMekan" message="tns:IService1_SetMekan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetMekanResponse" message="tns:IService1_SetMekan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMekanStok">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMekanStok" message="tns:IService1_GetMekanStok_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMekanStokResponse" message="tns:IService1_GetMekanStok_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStockEksilt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetStockEksilt" message="tns:IService1_SetStockEksilt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetStockEksiltResponse" message="tns:IService1_SetStockEksilt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDepo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetDepo" message="tns:IService1_SetDepo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetDepoResponse" message="tns:IService1_SetDepo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMekan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMekan" message="tns:IService1_GetMekan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMekanResponse" message="tns:IService1_GetMekan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoluOda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDoluOda" message="tns:IService1_GetDoluOda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDoluOdaResponse" message="tns:IService1_GetDoluOda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDepoUrun">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetDepoUrun" message="tns:IService1_SetDepoUrun_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetDepoUrunResponse" message="tns:IService1_SetDepoUrun_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKartBakiye">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetKartBakiye" message="tns:IService1_GetKartBakiye_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetKartBakiyeResponse" message="tns:IService1_GetKartBakiye_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKartOdeme">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetKartOdeme" message="tns:IService1_GetKartOdeme_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetKartOdemeResponse" message="tns:IService1_GetKartOdeme_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOdaOdeme">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetOdaOdeme" message="tns:IService1_GetOdaOdeme_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetOdaOdemeResponse" message="tns:IService1_GetOdaOdeme_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKisiBakiye">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetKisiBakiye" message="tns:IService1_GetKisiBakiye_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetKisiBakiyeResponse" message="tns:IService1_GetKisiBakiye_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetKisiKartCikis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetKisiKartCikis" message="tns:IService1_SetKisiKartCikis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetKisiKartCikisResponse" message="tns:IService1_SetKisiKartCikis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetKisiOdaCikis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetKisiOdaCikis" message="tns:IService1_SetKisiOdaCikis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetKisiOdaCikisResponse" message="tns:IService1_SetKisiOdaCikis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPersonelDepo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPersonelDepo" message="tns:IService1_SetPersonelDepo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPersonelDepoResponse" message="tns:IService1_SetPersonelDepo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPersonelDonanim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPersonelDonanim" message="tns:IService1_SetPersonelDonanim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPersonelDonanimResponse" message="tns:IService1_SetPersonelDonanim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDonanim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetDonanim" message="tns:IService1_SetDonanim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetDonanimResponse" message="tns:IService1_SetDonanim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDepoYeniUrun">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetDepoYeniUrun" message="tns:IService1_SetDepoYeniUrun_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetDepoYeniUrunResponse" message="tns:IService1_SetDepoYeniUrun_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepoUrun">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDepoUrun" message="tns:IService1_GetDepoUrun_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDepoUrunResponse" message="tns:IService1_GetDepoUrun_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDepoUrunEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetDepoUrunEkle" message="tns:IService1_SetDepoUrunEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetDepoUrunEkleResponse" message="tns:IService1_SetDepoUrunEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStokAd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStokAd" message="tns:IService1_GetStokAd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStokAdResponse" message="tns:IService1_GetStokAd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOdaUcret">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetOdaUcret" message="tns:IService1_GetOdaUcret_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetOdaUcretResponse" message="tns:IService1_GetOdaUcret_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTur">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTur" message="tns:IService1_GetTur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTurResponse" message="tns:IService1_GetTur_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKisiler">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetKisiler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKisiEkle">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetKisiEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOda">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetOda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKart">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetKart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOdaMekan">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetOdaMekan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKartMekan">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetKartMekan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStokGrup">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetStokGrup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStokGroup">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetStokGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStokAd">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetStokAd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStok">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetStok" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBirim">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetBirim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBirim">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBirim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepolar">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDepolar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMekanDepo">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetMekanDepo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMekanDepo">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMekanDepo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPozisyon">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPozisyon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPozisyon">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPozisyon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDonanim">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDonanim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPersonel">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPersonel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonel">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPersonel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPersonelId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelDepo">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPersonelDepo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelDonanim">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPersonelDonanim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelIdDonanim">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPersonelIdDonanim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MekanStok">
+      <soap:operation soapAction="http://tempuri.org/IService1/MekanStok" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStok">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetStok" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKisilerBakiye">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetKisilerBakiye" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKisiDurum">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetKisiDurum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOda">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetOda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBosKart">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBosKart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoluKart">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDoluKart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBakiyeEkle">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetBakiyeEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMekan">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetMekan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMekanStok">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMekanStok" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStockEksilt">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetStockEksilt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDepo">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetDepo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMekan">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMekan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoluOda">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDoluOda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDepoUrun">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetDepoUrun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKartBakiye">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetKartBakiye" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKartOdeme">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetKartOdeme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOdaOdeme">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetOdaOdeme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKisiBakiye">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetKisiBakiye" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKisiKartCikis">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetKisiKartCikis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKisiOdaCikis">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetKisiOdaCikis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPersonelDepo">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPersonelDepo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPersonelDonanim">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPersonelDonanim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDonanim">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetDonanim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDepoYeniUrun">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetDepoYeniUrun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepoUrun">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDepoUrun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDepoUrunEkle">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetDepoUrunEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStokAd">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetStokAd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOdaUcret">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetOdaUcret" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTur">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetTur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:51966/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
